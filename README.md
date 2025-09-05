@@ -303,7 +303,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## License
 
-Apache License 2.0 - see [LICENSE](LICENSE) file for details.
+BSD 3-Clause "New" or "Revised" License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
