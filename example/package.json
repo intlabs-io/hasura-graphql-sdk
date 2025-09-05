@@ -1,0 +1,36 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "postinstall": "test ! -f .env.local && cp env.local.example .env.local || true",
+    "graphql-sdk": "graphql-sdk generate",
+    "graphql-sdk:hooks": "graphql-sdk snippet hooks",
+    "hasura-setup": "cd hasura-project && hasura metadata apply && hasura migrate apply && hasura seed apply && hasura metadata reload",
+    "hasura-sync": "cd hasura-project && hasura metadata export && hasura migrate create \"init\" --from-server"
+  },
+  "dependencies": {
+    "next": "15.5.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@intlabs-io/graphql-sdk": "file:..",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "hasura-cli": "^2.36.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "graphql-sdk": {
+    "queries": "./src/graphql/**/*.graphql",
+    "hasura_url": "http://localhost:8080/v1/graphql",
+    "hasura_admin_token": "myadminsecretkey",
+    "output": "./src/lib/sdk.ts"
+  }
+}
