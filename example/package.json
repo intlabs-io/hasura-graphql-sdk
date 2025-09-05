@@ -13,9 +13,12 @@
     "hasura-sync": "cd hasura-project && hasura metadata export && hasura migrate create \"init\" --from-server"
   },
   "dependencies": {
+    "graphql": "^16.11.0",
+    "graphql-ws": "^6.0.6",
     "next": "15.5.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "swr": "^2.3.6"
   },
   "devDependencies": {
     "@intlabs-io/graphql-sdk": "file:..",

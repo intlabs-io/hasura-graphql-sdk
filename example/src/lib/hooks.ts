@@ -140,7 +140,7 @@ const adminHeaders = (): Record<string, string> => {
  * @returns the user
  */
 export const useGraphqlUser = () => {
-  const { authUser, isInitialized } = { authUser: null, isInitialized: false } as { authUser: any, isInitialized: boolean } //XXX: get Auth User
+  const { authUser, isInitialized } = { authUser: undefined, isInitialized: false } as { authUser: any, isInitialized: boolean } //XXX: get Auth User
   const identifier = authUser?.id
 
   const { data: { users_by_pk: user } = {}, isLoading } =
@@ -158,7 +158,7 @@ export const useGraphqlUser = () => {
  * @returns the user
  */
 export const useGraphqlUserSubscription = () => {
-  const { authUser, isInitialized } = { authUser: null, isInitialized: false } as { authUser: any, isInitialized: boolean } //XXX: get Auth User
+  const { authUser, isInitialized } = { authUser: undefined, isInitialized: false } as { authUser: any, isInitialized: boolean } //XXX: get Auth User
   const identifier = authUser?.id
 
   const subscriptionVariables = useMemo(
@@ -183,9 +183,9 @@ export const useGraphqlUserSubscription = () => {
  * @returns the graphql sdk
  */
 export const useGraphqlSdk = (role?: string) => {
-  const sessionJwt = null //XXX: get JWT
+  const sessionJwt: string | undefined = undefined //XXX: get JWT
   return useMemo(() => {
-    if (!sessionJwt) return null;
+    // For demo purposes, use admin headers when no JWT is available
     return getSdk(getHasuraRequester(GRAPHQL_API_URL, role, sessionJwt, adminHeaders()));
   }, [sessionJwt, role]);
 };
@@ -222,15 +222,17 @@ export const useSwrWithGraphqlSdk = <M extends HasuraGraphqlSdkMethodName>(
  * @returns the graphql websocket client
  */
 const useGraphqlWsClient = (role?: string, customHeaders: Record<string, string> = {}) => {
-  const sessionJwt = null //XXX: get JWT
+  const sessionJwt: string | undefined = undefined //XXX: get JWT
   return useMemo(() => {
-    if (!sessionJwt) return null;
+    // For demo purposes, use admin headers when no JWT is available
+    const adminHeadersForWs = adminHeaders();
     return createClient({
       url: GRAPHQL_WEBSOCKET_URL,
       connectionParams: {
         headers: {
           ...customHeaders,
-          Authorization: `Bearer ${sessionJwt}`,
+          ...adminHeadersForWs,
+          ...(sessionJwt ? { Authorization: `Bearer ${sessionJwt}` } : {}),
           ...(role ? { 'x-hasura-role': role } : {}),
         },
       },
