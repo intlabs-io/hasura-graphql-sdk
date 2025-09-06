@@ -1,4 +1,5 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
+import { join } from 'path';
 import SubscriptionDocLookupPlugin from './plugins/subscription-doc-lookup';
 import { findConfig, GraphQLSDKConfig } from './config';
 
@@ -14,9 +15,12 @@ export function createCodegenConfig(
   const {
     hasura_url: hasuraEndpoint,
     hasura_admin_token: hasuraAdminSecret,
-    queries: queriesPath,
-    output: outputPath,
+    graphqlDir: graphqlDirectory,
+    outputDir: outputDirectory,
   } = options;
+  
+  // Generate the full output path for the SDK file
+  const outputPath = join(outputDirectory, 'sdk.ts');
 
   return {
     schema: {
@@ -26,7 +30,7 @@ export function createCodegenConfig(
         },
       },
     },
-    documents: [queriesPath],
+    documents: [graphqlDirectory],
     pluginLoader: (name: string) => {
       if (name === 'subscription-doc-lookup')
         return SubscriptionDocLookupPlugin;

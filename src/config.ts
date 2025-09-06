@@ -3,10 +3,10 @@ import 'dotenv/config';
 import { resolve, join, dirname } from 'path';
 
 export interface GraphQLSDKConfig {
-  queries: string;
+  graphqlDir: string;
   hasura_url: string;
   hasura_admin_token: string;
-  output: string;
+  outputDir: string;
 }
 
 export function findConfig(): GraphQLSDKConfig | null {
@@ -14,16 +14,16 @@ export function findConfig(): GraphQLSDKConfig | null {
 
   // Check for environment variables
   const envConfig = {
-    queries: process.env.GRAPHQL_SDK_QUERIES_DIRECTORY,
+    graphqlDir: process.env.GRAPHQL_SDK_GRAPHQL_DIR,
     hasura_url: process.env.GRAPHQL_SDK_HASURA_URL,
     hasura_admin_token: process.env.GRAPHQL_SDK_HASURA_ADMIN_TOKEN,
-    output: process.env.GRAPHQL_SDK_OUTPUT,
+    outputDir: process.env.GRAPHQL_SDK_OUTPUT_DIR,
   };
   if (
-    typeof envConfig.queries === 'string' &&
+    typeof envConfig.graphqlDir === 'string' &&
     typeof envConfig.hasura_url === 'string' &&
     typeof envConfig.hasura_admin_token === 'string' &&
-    typeof envConfig.output === 'string'
+    typeof envConfig.outputDir === 'string'
   ) {
     console.log('Found configuration in environment variables');
     return envConfig as GraphQLSDKConfig;

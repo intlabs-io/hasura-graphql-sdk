@@ -31,9 +31,9 @@
     "typescript": "^5"
   },
   "graphql-sdk": {
-    "queries": "./src/graphql/**/*.graphql",
+    "graphqlDir": "./src/graphql/**/*.graphql",
     "hasura_url": "http://localhost:8080/v1/graphql",
     "hasura_admin_token": "myadminsecretkey",
-    "output": "./src/lib/sdk.ts"
+    "outputDir": "./src/lib"
   }
 }

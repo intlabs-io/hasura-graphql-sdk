@@ -15,13 +15,13 @@ function copyHooksSnippet() {
     process.exit(1);
   }
 
-  if (!config.output) {
-    console.error('Missing required configuration field: output');
+  if (!config.outputDir) {
+    console.error('Missing required configuration field: outputDir');
     process.exit(1);
   }
 
   // Get the directory where the SDK file is located
-  const sdkDir = dirname(config.output);
+  const sdkDir = config.outputDir;
   const hooksFileName = 'hooks.ts';
   const targetPath = join(sdkDir, hooksFileName);
 
@@ -109,10 +109,10 @@ async function generateSdk() {
     console.error(
       JSON.stringify(
         {
-          queries: './graphql',
+          graphqlDir: './graphql',
           hasura_url: 'http://localhost:8080/v1/graphql',
           hasura_admin_token: 'your-admin-token',
-          output: './app/lib/sdk.ts',
+          outputDir: './app/lib',
         },
         null,
         2,
@@ -123,10 +123,10 @@ async function generateSdk() {
 
   // Validate required fields
   const requiredFields = [
-    'queries',
+    'graphqlDir',
     'hasura_url',
     'hasura_admin_token',
-    'output',
+    'outputDir',
   ] as const;
   for (const field of requiredFields) {
     if (!config[field]) {
@@ -136,8 +136,8 @@ async function generateSdk() {
   }
 
   console.log('Generating GraphQL SDK...');
-  console.log(`Queries: ${config.queries}`);
-  console.log(`Output: ${config.output}`);
+  console.log(`GraphQL Directory: ${config.graphqlDir}`);
+  console.log(`Output Directory: ${config.outputDir}`);
   console.log(`Hasura URL: ${config.hasura_url}`);
 
   try {

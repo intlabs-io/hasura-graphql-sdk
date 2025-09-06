@@ -86,13 +86,14 @@ npm run graphql-sdk snippet hooks
 ```bash
 # Generate SDK
 npx @intlabs/graphql-sdk generate \
-  --queries="./graphql" \
+  --graphqlDir="./graphql" \
   --hasura_url="http://localhost:8080/v1/graphql" \
   --hasura_admin_token="your-admin-token" \
-  --output="./app/lib/sdk.ts"
+  --outputDir="./app/lib"
 
 # Copy React hooks
-npx @intlabs/graphql-sdk snippet hooks
+npx @intlabs/graphql-sdk snippet hooks \
+  --outputDir="./app/lib"
 ```
 
 ### Using the Generated SDK
@@ -233,10 +234,10 @@ Configure the SDK generation using one of these methods:
 ```json
 {
   "graphql-sdk": {
-    "queries": "./graphql",
+    "graphqlDir": "./graphql",
     "hasura_url": "http://localhost:8080/v1/graphql",
     "hasura_admin_token": "your-admin-token",
-    "output": "./app/lib/sdk.ts"
+    "outputDir": "./app/lib"
   }
 }
 ```
@@ -244,10 +245,10 @@ Configure the SDK generation using one of these methods:
 ### Option 2: .graphql-sdk.json
 ```json
 {
-  "queries": "./graphql",
+  "graphqlDir": "./graphql",
   "hasura_url": "http://localhost:8080/v1/graphql",
   "hasura_admin_token": "your-admin-token",
-  "output": "./app/lib/sdk.ts"
+  "outputDir": "./app/lib"
 }
 ```
 
@@ -255,10 +256,14 @@ Configure the SDK generation using one of these methods:
 
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
-| `queries` | `string` | ✅ | Path to folder containing GraphQL files |
+| `graphqlDir` | `string` | ✅ | Path to directory containing GraphQL files |
 | `hasura_url` | `string` | ✅ | Your Hasura GraphQL endpoint URL |
 | `hasura_admin_token` | `string` | ✅ | Hasura admin secret token |
-| `output` | `string` | ✅ | Output path for generated SDK file |
+| `outputDir` | `string` | ✅ | Output directory for generated SDK and hooks files |
+
+**Note**: The `outputDir` configuration is used by both commands:
+- `generate` command: Creates `sdk.ts` file in this directory
+- `snippet hooks` command: Creates `hooks.ts` file in this directory
 
 ## Type Guards
 
@@ -294,10 +299,10 @@ Then reference them in your configuration:
 
 ```json
 {
-  "queries": "./graphql",
+  "graphqlDir": "./graphql",
   "hasura_url": "${HASURA_GRAPHQL_ENDPOINT}",
   "hasura_admin_token": "${HASURA_ADMIN_SECRET}",
-  "output": "./app/lib/sdk.ts"
+  "outputDir": "./app/lib"
 }
 ```
 
