@@ -315,9 +315,3 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ## License
 
 BSD 3-Clause "New" or "Revised" License - see [LICENSE](LICENSE) file for details.
-
-## Support
-
-- 📖 [Documentation](https://github.com/intlabs/graphql-sdk/wiki)
-- 🐛 [Report Issues](https://github.com/intlabs/graphql-sdk/issues)
-- 💬 [Discussions](https://github.com/intlabs/graphql-sdk/discussions)
