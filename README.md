@@ -13,7 +13,7 @@ A TypeScript-first code generation library that creates a fully typed SDK for yo
 
 ## Under the Hood
 
-This project wraps [GraphQL Codegen](https://the-guild.dev/graphql/codegen) by [The Guild](https://the-guild.dev/), providing a streamlined Hasura-specific experience. The CLI programmatically calls GraphQL Code Generator, making it easier to use as a standalone tool without complex configuration.
+This project wraps [GraphQL Codegen](https://the-guild.dev/graphql/codegen) by [The Guild](https://the-guild.dev/), providing a streamlined Hasura-specific configuration with working examples for type-safe react hooks. The CLI programmatically calls GraphQL Codegen, making it easier to use as a standalone tool.
 
 ### Integration with Existing Codegen Projects
 
