@@ -1,5 +1,5 @@
 {
-  "name": "@intlabs-io/graphql-sdk",
+  "name": "@intlabs/graphql-sdk",
   "version": "1.0.0",
   "description": "A TypeScript-first code generation library that creates a fully typed SDK for your Hasura GraphQL queries and mutations",
   "main": "dist/index.js",
@@ -8,14 +8,52 @@
     "graphql-sdk": "dist/cli.js"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "react/**/*",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
-    "generate": "graphql-codegen generate --config src/codegen.ts"
+    "generate": "graphql-codegen generate --config src/codegen.ts",
+    "prepublishOnly": "npm run build && npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intlabs/hasura-graphql-sdk.git"
+  },
+  "homepage": "https://github.com/intlabs/hasura-graphql-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/intlabs/hasura-graphql-sdk/issues"
+  },
+  "keywords": [
+    "hasura",
+    "graphql",
+    "codegen",
+    "typescript",
+    "sdk",
+    "react",
+    "graphql-codegen"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
   },
   "author": "Intlabs.io",
+  "contributors": [
+    {
+      "name": "Ethan Vaughan",
+      "email": "ethan.vaughan@intlabs.io",
+      "url": "https://github.com/evaughan"
+    },
+    {
+      "name": "Mike Anderson",
+      "email": "mike@intlabs.io",
+      "url": "https://github.com/mike-anderson"
+    }
+  ],
   "license": "BSD-3-Clause",
   "dependencies": {
     "@graphql-codegen/cli": "^5.0.6",
@@ -24,13 +62,13 @@
     "@graphql-codegen/typescript-operations": "^4.6.1",
     "@graphql-codegen/typescript-react-query": "^6.1.0",
     "@graphql-codegen/typescript-resolvers": "^4.5.1",
-    "dotenv": "^16.5.0",
-    "prettier": "^3.6.2"
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "graphql": "^16.11.0",
     "graphql-ws": "^6.0.6",
+    "prettier": "^3.6.2",
     "react": "^19.1.1",
     "swr": "^2.3.6",
     "typescript": "^5"
