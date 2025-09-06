@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
-    "generate": "graphql-codegen --config src/codegen.ts"
+    "generate": "graphql-codegen generate --config src/codegen.ts"
   },
   "author": "Intlabs.io",
   "license": "BSD-3-Clause",

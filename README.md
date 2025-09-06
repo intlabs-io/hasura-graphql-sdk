@@ -11,6 +11,17 @@ A TypeScript-first code generation library that creates a fully typed SDK for yo
 - **Type guards** - Reusable type guard utilities for runtime type checking
 - **File-based queries** - Organize your GraphQL operations in separate files
 
+## Under the Hood
+
+This project wraps [GraphQL Codegen](https://the-guild.dev/graphql/codegen) by [The Guild](https://the-guild.dev/), providing a streamlined Hasura-specific experience. The CLI programmatically calls GraphQL Code Generator, making it easier to use as a standalone tool without complex configuration.
+
+### Integration with Existing Codegen Projects
+
+If you're already using GraphQL Codegen in your project, you can integrate this SDK's functionality directly:
+
+- **Use the codegen config**: Import and use the configuration from `codegen.ts` in your existing codegen setup
+- **Use the plugins**: The SDK includes custom plugins (like the subscription document lookup plugin) that can be added to your existing codegen configuration
+
 ## Installation
 
 ```bash
