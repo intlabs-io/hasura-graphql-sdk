@@ -80,7 +80,7 @@
    - Include screenshots for UI changes (if applicable)
    - Keep PRs focused - one feature/fix per PR
 
-## Reporting Issues
+## 🐛 Reporting Issues
 
 **Before creating an issue:**
 - Check existing issues to avoid duplicates
