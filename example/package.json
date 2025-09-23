@@ -26,7 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "hasura-cli": "^2.36.1",
+    "hasura-cli": "^2.38.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
