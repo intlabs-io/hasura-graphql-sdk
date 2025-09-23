@@ -1,0 +1,45 @@
+# Source files
+src/
+tsconfig.json
+
+# Development files
+example/
+*.log
+.env
+.env.local
+.env.*.local
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+*.test.*
+*.spec.*
+
+# Documentation source
+docs/
+CONTRIBUTING.md
+
+# Build artifacts (keep only dist/)
+node_modules/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
