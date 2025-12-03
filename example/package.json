@@ -15,7 +15,7 @@
   "dependencies": {
     "graphql": "^16.11.0",
     "graphql-ws": "^6.0.6",
-    "next": "15.5.2",
+    "next": "15.5.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "swr": "^2.3.6"
